@@ -167,6 +167,11 @@ public class DependencyUpdatesReport
                 {
                     String outputFile =
                         getProject().getBuild().getDirectory() + File.separator + getOutputName() + ".xml";
+                    File outputDir = new File(getProject().getBuild().getDirectory());
+                    if (!outputDir.exists())
+                    {
+                      outputDir.mkdirs();
+                    }
                     DependencyUpdatesXmlRenderer xmlGenerator =
                         new DependencyUpdatesXmlRenderer( dependencyUpdates, dependencyManagementUpdates, outputFile );
                     xmlGenerator.render();
